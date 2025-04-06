@@ -2427,3 +2427,55 @@ footer {
 .dark-mode #contributorsBtn {
   background-color: #34495e; /* Dark background for contributors button */
 }
+
+.search-input {
+  border: 2px solid #ccc;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #ff5722; 
+  box-shadow: 0 0 5px rgba(255, 87, 34, 0.5); 
+  outline: none;
+}
+.search-input {
+  position: relative;
+}
+
+.search-input::placeholder {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0.7;
+}
+
+.search-input:focus::placeholder {
+  transform: translateY(-20px); 
+  opacity: 0.5; 
+}
+
+.search-area {
+  transition: background-color 0.3s ease;
+  margin-left: 5px;
+  text-align: right;
+}
+
+.search-area:hover {
+  background-color: rgba(255, 255, 255, 0.8); 
+}
+
+.search-icon {
+  transition: transform 0.3s ease;
+}
+
+.search-icon:hover {
+  transform: scale(1.1); 
+}
+
+.search-input {
+  border-radius: 25px; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  padding: 10px 20px; 
+}
+
+.search-area, .search-input {
+  transition: all 0.3s ease; 
+}

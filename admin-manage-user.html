@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Users</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .sidebar h2 {
+            margin-bottom: 20px;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin: 5px 0;
+            background: #34495e;
+            display: block;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .sidebar a:hover {
+            background: #1abc9c;
+            transform: scale(1.05);
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background: #ecf0f1;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #34495e;
+            color: white;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+        button {
+            background: #1abc9c;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #16a085;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <a href="adminindex.html">Dashboard</a>
+        <a href="admin-meal-plan.html">Meal Plans</a>
+        <a href="admin-meal-items.html">Meal Items</a>
+        <a href="admin-manage-users.html">Manage Users</a>
+        <a href="#">Logout</a>
+    </div>
+    <div class="main-content">
+        <h1>Manage Users</h1>
+        <div class="card">
+            <h3>Registered Users</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>resturant 1</td>
+                        <td>resturant 1.com</td>
+                        <td>user</td>
+                        <td><button>Edit</button> <button>Delete</button></td>
+                    </tr>
+                    <tr>
+                        <td>resturant 2</td>
+                        <td>resturant 2</td>
+                        <td>User</td>
+                        <td><button>Edit</button> <button>Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card form-container">
+            <h3>Add / Edit User</h3>
+            <input type="text" placeholder="User Name">
+            <input type="email" placeholder="Email">
+            <select>
+                <option value="User">User</option>
+                <option value="Admin">Admin</option>
+            </select>
+            <button>Save</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .sidebar h2 {
+            margin-bottom: 20px;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin: 5px 0;
+            background: #34495e;
+            display: block;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .sidebar a:hover {
+            background: #1abc9c;
+            transform: scale(1.05);
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background: #ecf0f1;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease, transform 0.2s ease;
+        }
+        .card:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <a href="#">Dashboard</a>
+        <a href="#">Manage Orders</a>
+        <a href="admin-manage-user.html">Manage Users</a>
+        <a href="admin-meal-plan.html">Meal Plans</a>
+        <a href="admin-meal-item.html">Meal Items</a>
+        <a href="#">Logout</a>
+    </div>
+    <div class="main-content">
+        <h1>Welcome, Admin</h1>
+        <div class="card">
+            <h3>Orders</h3>
+            <p>Manage all user orders here.</p>
+        </div>
+        <div class="card">
+            <h3>Users</h3>
+            <p>View and manage registered users.</p>
+        </div>
+        <div class="card">
+            <h3>Meal Plans</h3>
+            <p>Modify and update meal plans.</p>
+        </div>
+        <div class="card">
+            <h3>Meal items</h3>
+            <p>Modify and update meal items.</p>
+        </div>
+    </div>
+</body>
+</html>

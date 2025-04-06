@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments page</title>
+    <link rel="stylesheet" href="payments.css">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <form id="paymentForm">
+            <div class="row">
+                <div class="column">
+                    <h3 class="title">Billing Address</h3>
+                    <div class="input-box">
+                        <span>Full Name :</span>
+                        <input type="text" id="name" placeholder="Jacob Aiden" required>
+                    </div>
+                    <div class="input-box">
+                        <span>Email :</span>
+                        <input type="email" id="email" placeholder="example@example.com" required>
+                    </div>
+                    <div class="input-box">
+                        <span>Address :</span>
+                        <input type="text" id="address" placeholder="Room - Street - Locality" required>
+                    </div>
+                    <div class="input-box">
+                        <span>City :</span>
+                        <input type="text" id="city" placeholder="Berlin" required>
+                    </div>
+                    <div class="flex">
+                        <div class="input-box">
+                            <span>State :</span>
+                            <input type="text" id="state" placeholder="Germany" required>
+                        </div>
+                        <div class="input-box">
+                            <span>Zip Code :</span>
+                            <input type="number" id="zip" placeholder="123 456" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <h3 class="title">Payment</h3>
+                    <div class="input-box">
+                        <span>Cards Accepted :</span>
+                        <img src="imgcards.png" alt="Image not available">
+                    </div>
+
+                    <div id="card-element">
+                        <!-- A Stripe Element will be inserted here. -->
+                    </div>
+                    <div id="card-errors" role="alert"></div>
+
+                </div>
+            </div>
+
+            <button type="submit" id="submitButton" class="btn">Submit Payment</button>
+        </form>
+    </div>
+
+    <script>
+        // Here we set up Stripe.js and create the elements of the form
+        const stripe = Stripe('');//Add your stripe account key here
+        const elements = stripe.elements();
+
+        const cardElements = elements.create('card');
+
+        cardElements.mount('#card-element');
+
+        // Here we handle the form submission
+        const form = document.getElementById('paymentForm');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            //Here we collect the payment information
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            const city = document.getElementById('city').value;
+            const state = document.getElementById('state').value;
+            const zip = document.getElementById('zip').value;
+
+            // Creating a payment intent which will use the server-side 
+            const paymentIntent = await createPaymentIntent();
+
+            const { paymentIntent : confirmedPaymentIntent, error } = await stripe.confirmCardPayment(paymentIntent.client_secret, {
+                payment_method: {
+                    card: cardElements,
+                    billing_details: {
+                        name: name,
+                        email: email,
+                        address: {
+                            city: city,
+                            line1: address,
+                            state: state,
+                            postal_code: zip
+                        }
+                    }
+                }
+            });
+
+        if (error) {
+            const errorElement = document.getElementById('card-errors');
+            errorElement.textContent = error.message;
+        } else if (confirmedPaymentIntent.status === 'succeeded') {
+            // Here we handle the payment success
+            alert('Payment successful');
+            localStorage.removeItem('cart');
+            window.location.href = 'index.html';
+        }
+    });
+
+    async function createPaymentIntent() {
+        const response = await fetch('/payment/create-payment-intent', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                amount: 5000, // Here we add the real amount
+                currency: 'INR'
+            })
+        });
+        return await response.json();
+    }
+    </script>
+
+</body>
+
+</html>

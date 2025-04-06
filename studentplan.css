@@ -46,8 +46,8 @@ body {
 .student-plan-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
     justify-content: center;
+    gap: 30px;
 }
 
 /* Card Styles */
@@ -56,6 +56,13 @@ body {
     height: 350px;
     perspective: 1000px; /* Highlighted: Added 3D perspective for card flip effect */
     cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 15px; 
+        border: 1px solid #ddd;
+}
+.student-plan-card:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
 }
 
 .card-inner {
@@ -67,7 +74,7 @@ body {
 }
 
 .student-plan-card:hover .card-inner {
-    transform: rotateY(180deg); /* Highlighted: Flip card on hover */
+    transform: rotateY(90deg); /* Highlighted: Flip card on hover */
 }
 
 .card-front,
@@ -83,6 +90,25 @@ body {
 
 .card-front {
     background: #e03e00;
+    background: linear-gradient(135deg, #e03e00, #ff5722);
+    position: relative;
+}
+
+.card-front::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3); /* Dark overlay */
+    border-radius: 10px; /* Match card corners */
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+.student-plan-card:hover .card-front::after {
+    opacity: 1; 
 }
 
 .card-image {
@@ -100,11 +126,18 @@ body {
     color: #fff;
     padding: 10px;
     text-align: center;
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.3s ease; 
+}
+
+.student-plan-card:hover .card-overlay {
+    opacity: 1; 
 }
 
 .meal-name {
     font-size: 1.2rem;
     margin-bottom: 5px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); 
 }
 
 .price {
@@ -119,6 +152,7 @@ body {
     padding: 15px;
     box-sizing: border-box;
     text-align: center;
+    transition: transform 0.3s ease;
 }
 
 .card-back h3 {
@@ -132,9 +166,32 @@ body {
     margin: 0;
 }
 
+
+.card-back ul li::before {
+    content: '✔'; /* Example icon */
+    position: absolute;
+    left: 0;
+    color: #ffeb3b; /* Icon color */
+}
 .card-back ul li {
     font-size: 1rem;
     margin: 5px 0;
+    font-size: 1rem;
+    margin: 5px 0;
+    position: relative; 
+    padding-left: 20px; 
+}
+
+.meal-name, .price {
+    transition: color 0.3s ease; 
+}
+
+.student-plan-card:hover .meal-name {
+    color: #ffeb3b; 
+}
+
+.student-plan-card:hover .price {
+    color: #fff; 
 }
 
 /* Responsive Design */
@@ -145,7 +202,7 @@ body {
     }
 
     .student-plan-card {
-        width: 80%; /* Highlighted: Adjusted width for tablet screens */
+        width: 90%; /* Highlighted: Adjusted width for tablet screens */
         height: 400px; /* Highlighted: Increased height for better spacing */
     }
 }

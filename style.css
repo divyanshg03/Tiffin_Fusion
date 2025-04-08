@@ -466,11 +466,12 @@ color: #fc0635;
 .nav-item a:hover::after {
   width: 100%;
   left: 0;
+  text-decoration: none;
 }
 
 .navbar.scrolled {
 background-color: #ffffff; /* Change to white or any color */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Mobile View Adjustments */

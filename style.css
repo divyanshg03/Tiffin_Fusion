@@ -49,7 +49,7 @@ body.dark {
 }
 
 .dark-mode .navbar a {
-  color: #ffffff !important;
+  color: #cbb9b9 !important;
 }
 
 /*These will ensure that the meal plans are visible in dark mode*/
@@ -61,17 +61,22 @@ body.dark {
 .dark-mode .dropdown-item:hover {
   background-color: #444444; 
   color: #ffffff; 
+  font-weight: 700;
+  text-shadow: #0056b3;
+  text-decoration: 2px red solid underline;
 }
 
 .dark-mode .dropdown-item:active {
   background-color: #555555; 
   color: #ffffff; 
+  text-decoration: 3px red solid underline;
 }
 
 
 .dark-mode .btn-outline-dark {
-  color: #ffffff;
+   color: #ffffff;
   border-color: #ffffff;
+  box-shadow: #1e1e1e;
 }
 
 /* Toggle Button Adjustments */
@@ -441,8 +446,12 @@ body.dark {
   position: relative;
   padding: 8px 12px; /* Consistent padding for each link */
   transition: color 0.3s ease;
+  
 }
 
+.nav-item a:hover {
+color: #fc0635;
+}
 .nav-item a::after {
   content: "";
   position: absolute;
@@ -457,6 +466,12 @@ body.dark {
 .nav-item a:hover::after {
   width: 100%;
   left: 0;
+  text-decoration: none;
+}
+
+.navbar.scrolled {
+background-color: #ffffff; /* Change to white or any color */
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Mobile View Adjustments */

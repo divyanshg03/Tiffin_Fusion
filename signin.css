@@ -70,6 +70,7 @@
   
   .auth-btn:active {
     transform: scale(0.98);
+    color: #007bff;
   }
 
   /* Input group */
@@ -147,6 +148,7 @@
   
   .auth-box img:hover {
     transform: rotate(360deg);
+    
   }
   
   /* Animations */

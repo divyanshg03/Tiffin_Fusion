@@ -446,8 +446,12 @@ body.dark {
   position: relative;
   padding: 8px 12px; /* Consistent padding for each link */
   transition: color 0.3s ease;
+  
 }
 
+.nav-item a:hover {
+color: #fc0635;
+}
 .nav-item a::after {
   content: "";
   position: absolute;
@@ -462,6 +466,11 @@ body.dark {
 .nav-item a:hover::after {
   width: 100%;
   left: 0;
+}
+
+.navbar.scrolled {
+background-color: #ffffff; /* Change to white or any color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Mobile View Adjustments */
